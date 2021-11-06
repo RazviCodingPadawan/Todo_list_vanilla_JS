@@ -29,7 +29,6 @@ btn.addEventListener('click', function(e){
 let firstList = document.getElementById('firstList');
 let addBtn = document.getElementById('add');
 
-
 addBtn.addEventListener('click', function() {
     let newItem = document.createElement('li');
     firstList.appendChild(newItem);
@@ -44,6 +43,18 @@ addBtn.addEventListener('click', function() {
     let changeBtn = document.createElement('button');
     newItem.appendChild(changeBtn);
     changeBtn.innerHTML = "Change";
+    
+    let saveBtn = document.createElement('button');
+    saveBtn.innerHTML = "Save";
+    saveBtn.addEventListener('click', function() {
+        input.disabled = true;
+        newItem.replaceChild(changeBtn, saveBtn);
+    })
+
+    changeBtn.addEventListener('click', function() {
+        input.disabled = false;
+        newItem.replaceChild(saveBtn, changeBtn);
+    });
 
     let doneBtn = document.createElement('button');
     newItem.appendChild(doneBtn);
