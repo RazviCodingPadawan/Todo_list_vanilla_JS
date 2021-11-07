@@ -70,7 +70,8 @@ addBtn.addEventListener('click', function() {
 
 let resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click', function() {
-    document.getElementById('firstList').remove();
-    document.getElementById('secondList').remove();
+    while (firstList.firstChild) {
+        firstList.removeChild(firstList.firstChild);
+    }
     errorMessage.innerHTML = "";
 })
