@@ -28,6 +28,7 @@ btn.addEventListener('click', function(e){
 
 let firstList = document.getElementById('firstList');
 let addBtn = document.getElementById('add');
+let secondList = document.getElementById('secondList');
 
 addBtn.addEventListener('click', function() {
     let newItem = document.createElement('li');
@@ -59,6 +60,10 @@ addBtn.addEventListener('click', function() {
     let doneBtn = document.createElement('button');
     newItem.appendChild(doneBtn);
     doneBtn.innerHTML = "Done";
+    doneBtn.addEventListener('click', function() {
+        secondList.appendChild(newItem);
+        doneBtn.remove();
+    })
 
     let deleteBtn = document.createElement('button');
     newItem.appendChild(deleteBtn);
