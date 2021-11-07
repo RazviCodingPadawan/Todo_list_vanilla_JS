@@ -30,7 +30,7 @@ addBtn.addEventListener('click', function() {
         saveBtn.addEventListener('click', function() {
             if (input.value === '') {
                 error.appendChild(errorMessage);
-                errorMessage.innerHTML = "nu ai voie sa salvezi casute goale";
+                errorMessage.innerHTML = "You cannot save empty chores!";
             } else {
                 errorMessage.innerHTML = "";
                 input.disabled = true;
@@ -48,8 +48,14 @@ addBtn.addEventListener('click', function() {
         newItem.appendChild(doneBtn);
         doneBtn.innerHTML = "Done";
         doneBtn.addEventListener('click', function() {
-        secondList.appendChild(newItem);
-        doneBtn.remove();
+            if (input.value === '') {
+                error.appendChild(errorMessage);
+                errorMessage.innerHTML = "There is no chore!";
+            } else {
+                secondList.appendChild(newItem);
+                doneBtn.remove();
+            }
+        
     })
 
         let deleteBtn = document.createElement('button');
