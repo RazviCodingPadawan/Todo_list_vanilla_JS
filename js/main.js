@@ -68,6 +68,9 @@ addBtn.addEventListener('click', function() {
     let deleteBtn = document.createElement('button');
     newItem.appendChild(deleteBtn);
     deleteBtn.innerHTML = "Delete";
+    deleteBtn.addEventListener('click', function() {
+        newItem.remove();
+    })
 
    //firstList.innerHTML += '<li><input type="text" disabled> <button id="change">Change</button><button id="done">Done</button><button id="delete">Delete</button></li>';
 });
