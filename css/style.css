@@ -1,8 +1,46 @@
+
 li {
     list-style: disc;
 }
 p {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial Black, Helvetica, sans-serif;
     font-size: x-large;
     color: red;
+}
+main{
+    width: 900px;
+    margin: auto;
+}
+#first-section {
+    background-color: lightgoldenrodyellow;
+    width: 50%;
+    float: left;
+}
+#second-section {
+    background-color: lightgreen;
+    width: 50%;
+    float: right;
+}
+.mainDiv{
+    background-color: lightskyblue;
+    color: darkblue;
+    text-align: center;
+}
+#first-section h2{
+    color: orange;
+}
+#second-section h2 {
+    color: green;
+}
+.mainDiv input{
+    background-color: lightblue;
+    color: darkblue;
+}
+#first-section input {
+    background-color: lightyellow;
+    color: orange;
+}
+#second-section input {
+    background-color: rgba(185, 248, 160, 0.979);
+    color: green;
 }
