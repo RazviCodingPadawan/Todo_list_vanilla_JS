@@ -26,6 +26,10 @@ addBtn.addEventListener('click', function() {
         newItem.appendChild(changeBtn);
         changeBtn.innerHTML = "Change";
         changeBtn.setAttribute('class', 'btn btn-outline-warning');
+        changeBtn.addEventListener('click', function() {
+            input.disabled = false;
+            newItem.replaceChild(saveBtn, changeBtn);
+        });
     
         let saveBtn = document.createElement('button');
         saveBtn.innerHTML = "Save";
@@ -41,11 +45,6 @@ addBtn.addEventListener('click', function() {
             }
         
     })
-
-        changeBtn.addEventListener('click', function() {
-        input.disabled = false;
-        newItem.replaceChild(saveBtn, changeBtn);
-    });
 
         let doneBtn = document.createElement('button');
         newItem.appendChild(doneBtn);
