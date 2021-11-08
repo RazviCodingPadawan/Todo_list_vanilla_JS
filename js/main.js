@@ -73,5 +73,8 @@ resetBtn.addEventListener('click', function() {
     while (firstList.firstChild) {
         firstList.removeChild(firstList.firstChild);
     }
+    while (secondList.firstChild) {
+        secondList.removeChild(secondList.firstChild);
+    }
     errorMessage.innerHTML = "";
 })
