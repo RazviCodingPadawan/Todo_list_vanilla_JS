@@ -1,12 +1,14 @@
-let firstList = document.getElementById('firstList');
+/* let firstList = document.getElementById('firstList');
 let addBtn = document.getElementById('add');
 addBtn.setAttribute('class', 'btn btn-outline-primary');
 let secondList = document.getElementById('secondList');
 let newInput = document.getElementById('add-new-item');
 let error = document.getElementById('error');
-let errorMessage = document.createElement('p');
+let errorMessage = document.createElement('p'); */
 
-addBtn.addEventListener('click', function() {
+// Version 1
+
+/* addBtn.addEventListener('click', function() {
     
     if (newInput.value === '') {
         error.appendChild(errorMessage);
@@ -85,4 +87,107 @@ resetBtn.addEventListener('click', function() {
         secondList.removeChild(secondList.firstChild);
     }
     errorMessage.innerHTML = "";
+}) */
+
+
+// Version 2
+
+let firstList = document.getElementById('firstList');
+let addBtn = document.getElementById('add');
+addBtn.setAttribute('class', 'btn btn-outline-primary');
+let secondList = document.getElementById('secondList');
+let newInput = document.getElementById('add-new-item');
+let error = document.getElementById('error');
+let errorMessage = document.createElement('p');
+
+
+
+addBtn.addEventListener('click', function() {
+    if(newInput.value === '') {
+        error.appendChild(errorMessage);
+        errorMessage.innerHTML = "<br>You cannot create empty chores!";
+    } else {
+        errorMessage.innerHTML = "";
+        let newItem = document.createElement('li');
+        firstList.appendChild(newItem);
+
+        let input = document.createElement('input');
+        newItem.appendChild(input);
+        input.value = newInput.value;
+        input.disabled = true;
+        newInput.value = '';
+
+        let Buttons = function(name, className) {
+            this.name = name;
+            this.className = className;
+            var button = document.createElement('button');
+            this.button = button;
+        
+            this.create = function() {
+                button.type = 'button';
+                button.innerHTML = name;
+                newItem.appendChild(button);
+            }
+        };
+
+        var changeBtn = new Buttons('Change', 'btn btn-outline-warning');
+        changeBtn.create();
+        //changeBtn.setAttribute('class', 'btn btn-outline-warning');
+        changeBtn.button.onclick = function() {
+            input.disabled = false;
+            this.remove();
+            saveBtn.create();
+        }
+
+        var saveBtn = new Buttons('Save');
+        //saveBtn.setAttribute('class', 'btn btn-outline-warning');
+        saveBtn.button.onclick = function() {
+            if (input.value === '') {
+                error.appendChild(errorMessage);
+                errorMessage.innerHTML = "<br>You cannot save empty chores!";
+            } else {
+                errorMessage.innerHTML = "";
+                input.disabled = true;
+                this.remove();
+                changeBtn.create();
+            }
+        }
+
+        var doneBtn = new Buttons('Done');
+        doneBtn.create();
+        //doneBtn.setAttribute('class','btn btn-outline-success');
+        doneBtn.button.onclick = function() {
+            if (input.value === '') {
+                error.appendChild(errorMessage);
+                errorMessage.innerHTML = "<br>There is no chore!";
+            } else {
+                secondList.appendChild(newItem);
+                this.remove();
+                //changeBtn.setAttribute('class', 'btn btn-warning');
+                //saveBtn.setAttribute('class', 'btn btn-warning');
+                //deleteBtn.setAttribute('class', 'btn btn-danger');
+            }
+        }
+
+        var deleteBtn = new Buttons('Delete');
+        deleteBtn.create();
+        //deleteBtn.setAttribute('class', 'btn btn-outline-danger')
+        deleteBtn.button.onclick = function() {
+            newItem.remove();
+        }
+    }
 })
+
+let resetBtn = document.getElementById('reset');
+resetBtn.setAttribute('class', 'btn btn-outline-dark');
+resetBtn.addEventListener('click', function() {
+    while (firstList.firstChild) {
+        firstList.removeChild(firstList.firstChild);
+    }
+    while (secondList.firstChild) {
+        secondList.removeChild(secondList.firstChild);
+    }
+    errorMessage.innerHTML = "";
+})
+
+
