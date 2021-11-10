@@ -1,10 +1,10 @@
-/* let firstList = document.getElementById('firstList');
+let firstList = document.getElementById('firstList');
 let addBtn = document.getElementById('add');
 addBtn.setAttribute('class', 'btn btn-outline-primary');
 let secondList = document.getElementById('secondList');
 let newInput = document.getElementById('add-new-item');
 let error = document.getElementById('error');
-let errorMessage = document.createElement('p'); */
+let errorMessage = document.createElement('p');
 
 // Version 1
 
@@ -92,16 +92,6 @@ resetBtn.addEventListener('click', function() {
 
 // Version 2
 
-let firstList = document.getElementById('firstList');
-let addBtn = document.getElementById('add');
-addBtn.setAttribute('class', 'btn btn-outline-primary');
-let secondList = document.getElementById('secondList');
-let newInput = document.getElementById('add-new-item');
-let error = document.getElementById('error');
-let errorMessage = document.createElement('p');
-
-
-
 addBtn.addEventListener('click', function() {
     if(newInput.value === '') {
         error.appendChild(errorMessage);
@@ -127,6 +117,7 @@ addBtn.addEventListener('click', function() {
                 button.type = 'button';
                 button.innerHTML = name;
                 newItem.appendChild(button);
+                button.className = className;
             }
         };
 
@@ -139,7 +130,7 @@ addBtn.addEventListener('click', function() {
             saveBtn.create();
         }
 
-        var saveBtn = new Buttons('Save');
+        var saveBtn = new Buttons('Save', 'btn btn-outline-warning');
         //saveBtn.setAttribute('class', 'btn btn-outline-warning');
         saveBtn.button.onclick = function() {
             if (input.value === '') {
@@ -153,7 +144,7 @@ addBtn.addEventListener('click', function() {
             }
         }
 
-        var doneBtn = new Buttons('Done');
+        var doneBtn = new Buttons('Done', 'btn btn-outline-success');
         doneBtn.create();
         //doneBtn.setAttribute('class','btn btn-outline-success');
         doneBtn.button.onclick = function() {
@@ -169,7 +160,7 @@ addBtn.addEventListener('click', function() {
             }
         }
 
-        var deleteBtn = new Buttons('Delete');
+        var deleteBtn = new Buttons('Delete', 'btn btn-outline-danger');
         deleteBtn.create();
         //deleteBtn.setAttribute('class', 'btn btn-outline-danger')
         deleteBtn.button.onclick = function() {
